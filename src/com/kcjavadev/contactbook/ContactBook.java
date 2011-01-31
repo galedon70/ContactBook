@@ -44,7 +44,7 @@ public class ContactBook	{
         System.out.println( "Starting application" );
         
         // initialize a new class to work with
-        ContactBook contacBook = new ContactBook();
+        ContactBook contactBook = new ContactBook();
         
         System.out.println( "Creating initial contact book" );
 
@@ -55,12 +55,36 @@ public class ContactBook	{
 
         contactBook.addContact(person);
 
+        person = new Person;
         person.setName("Suzie Smiles");
         person.setCity("Happy Town");
         person.SetState("TX");
 
         contactBook.addContact(person);
         
+        person = new Person;
+        person.setName("Brad Pitt");
+        person.setCity("Angelinaville");
+        person.SetState("CA");
+
+        contactBook.addContact(person);
+
+        person = new Person;
+        person.setName("Kermit");
+        person.setCity("Sesame Street");
+        person.SetState("NY");
+
+        person = new Person;
+        person.setName("Mickey Mouse");
+        person.setCity("Orlando");
+        person.SetState("FL");
+
+        contactBook.addContact(person);
+
+
+        contactBook.addContact(person);
+
+
         // now print the entries
         contactBook.printContacts( );
     	}
