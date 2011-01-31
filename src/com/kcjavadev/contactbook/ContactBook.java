@@ -2,34 +2,24 @@ package com.kcjavadev.contactbook;
 
 import java.util.HashMap;
 
-public class ContactBook {
-    
+public class ContactBook	{
+	
+	String name, address;
+	
+	ContactBook(){
+		name = "";
+		address = "";
+	}
+	
 	private HashMap<String,String> contacts = new HashMap<String,String>();
-    
-    /**
-     * There are several ways to get data into your map.  This puts them in one by one.  hardcoded.
-     */
-    public void createInitialBook1( ) {
-        contacts.put( "Bob Jones", "Charlotte, NC" );
-        contacts.put( "Andrea Chavez", "Seattle, WA" );
+	
+    public void addContact(String a, String n){
+    	name = n;
+    	address = a;
+    	contacts.put(name, address);
     }
-    
-    /**
-     * Here the names and cities are in arrays.  The cities must match the order of the names
-     */
-    public void createInitialBook2( ) {
-        String[] names = new String[] { "Bob Jones", "Andrea Chavez" };
-        String[] cities = new String[] { "Charlotte, NC", "Seattle, WA" };
-        
-        // iterating over the array to put the names and cities into the map
-        for ( int x = 0; x < names.length; x++ ) {
-            contacts.put( names[x], cities[x] );
-        }
-        
-       
-    }
-    
-    public void printContactList( ) {
+
+    public void printContacts( ) {
         // this is the new way to do a for-loop.  Java converts the Set to an iterator and does the base work for you.
         for ( String name : contacts.keySet() ) {
             // a map is just a key/value pair.  The name is the key so contacts.get( name ) gets the associated city
@@ -37,4 +27,19 @@ public class ContactBook {
         }
     }
 
+	public static void main( String[] args ) {
+        System.out.println( "Staring application" );
+        
+        // initialize a new class to work with
+        ContactBook cb = new ContactBook();
+        
+        System.out.println( "Creating initial contact book" );
+        cb.addContact("Test Name1","Test Address1");
+        cb.addContact("Test Name2", "Test Address2");
+        
+        // now print the entries
+        cb.printContacts( );
+    	}
+    
+   
 }
