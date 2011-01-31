@@ -1,1 +1,5 @@
 This project is the coolest ever!
+
+Next Steps
+ - Review my comments in ContactBook
+ - Delete the HashMap and move to adding contacts using the Person object.
