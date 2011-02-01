@@ -1,40 +1,93 @@
 package com.kcjavadev.contactbook;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class ContactBook {
-    
-	private HashMap<String,String> contacts = new HashMap<String,String>();
-    
-    /**
-     * There are several ways to get data into your map.  This puts them in one by one.  hardcoded.
-     */
-    public void createInitialBook1( ) {
-        contacts.put( "Bob Jones", "Charlotte, NC" );
-        contacts.put( "Andrea Chavez", "Seattle, WA" );
+/**
+ * 
+ * ContactBook is the main entry into the app.  This sets everything up and communicates
+ * with the client to get input.
+ * 
+ * @author scott
+ *
+ */
+public class ContactBook	{
+	
+
+	//List of Persons
+               private List<Person> contacts;
+
+	// Typically want to make constructors public unless you definitely don't want others accessing.
+	public ContactBook(){
+
+		contacts = new ArrayList<Person>();
+	}
+	
+	
+    public void addContact(Person person){
+          contacts.add(person);
     }
-    
-    /**
-     * Here the names and cities are in arrays.  The cities must match the order of the names
-     */
-    public void createInitialBook2( ) {
-        String[] names = new String[] { "Bob Jones", "Andrea Chavez" };
-        String[] cities = new String[] { "Charlotte, NC", "Seattle, WA" };
-        
-        // iterating over the array to put the names and cities into the map
-        for ( int x = 0; x < names.length; x++ ) {
-            contacts.put( names[x], cities[x] );
-        }
-        
-       
-    }
-    
-    public void printContactList( ) {
+
+    public void printContacts( ) {
         // this is the new way to do a for-loop.  Java converts the Set to an iterator and does the base work for you.
-        for ( String name : contacts.keySet() ) {
-            // a map is just a key/value pair.  The name is the key so contacts.get( name ) gets the associated city
-            System.out.println( name + " : " + contacts.get( name ) );
+        for ( Person person : contacts ) {
+            System.out.println( person.getName() + " : " + person.getAddress() );
         }
     }
 
+    /**
+     * Main (currently only) way into the application.  
+     * @param args
+     */
+	public static void main( String[] args ) {
+        System.out.println( "Starting application" );
+        
+        // initialize a new class to work with
+        ContactBook contactBook = new ContactBook();
+        
+        System.out.println( "Creating initial contact book" );
+
+        Person person = new Person;
+        person.setName("Jo Blow");
+        person.setCity("JoVille");
+        person.SetState("CA");
+
+        contactBook.addContact(person);
+
+        person = new Person;
+        person.setName("Suzie Smiles");
+        person.setCity("Happy Town");
+        person.SetState("TX");
+
+        contactBook.addContact(person);
+        
+        person = new Person;
+        person.setName("Brad Pitt");
+        person.setCity("Angelinaville");
+        person.SetState("CA");
+
+        contactBook.addContact(person);
+
+        person = new Person;
+        person.setName("Kermit");
+        person.setCity("Sesame Street");
+        person.SetState("NY");
+
+        person = new Person;
+        person.setName("Mickey Mouse");
+        person.setCity("Orlando");
+        person.SetState("FL");
+
+        contactBook.addContact(person);
+
+
+        contactBook.addContact(person);
+
+
+        // now print the entries
+        contactBook.printContacts( );
+    	}
+    
+   
 }

@@ -1,3 +1,5 @@
 This project is the coolest ever!
 
-Got it working in eclipse!
+Next Steps
+ - Review my comments in ContactBook
+ - Delete the HashMap and move to adding contacts using the Person object.
