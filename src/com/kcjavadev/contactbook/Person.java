@@ -76,5 +76,22 @@ public class Person {
 		this.zipCode4 = zipCode4;
 	}
 	
+	// this is an example of a utility method that will help you 
+//	public String getAddress() {
+//		return getCity() + ", " + getState() + " " + getZipCode();
+//	}
+	
+	// a better way to build strings!
+	// This is a better way to do string concatenation
+//	public String getAddress() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append( getCity() );
+//		builder.append( ", " ).append( getState() );
+//		builder.append( " " ).append( getZipCode() );
+//		if ( getZipCode4() != null ) {
+//			builder.append( "-" ).append( getZipCode4() );
+//		}
+//		return builder.toString();
+//	}
 	
 }
