@@ -83,15 +83,15 @@ public class Person {
 	
 	// a better way to build strings!
 	// This is a better way to do string concatenation
-//	public String getAddress() {
-//		StringBuilder builder = new StringBuilder();
-//		builder.append( getCity() );
-//		builder.append( ", " ).append( getState() );
-//		builder.append( " " ).append( getZipCode() );
-//		if ( getZipCode4() != null ) {
-//			builder.append( "-" ).append( getZipCode4() );
-//		}
-//		return builder.toString();
-//	}
+	public String getAddress() {
+		StringBuilder builder = new StringBuilder();
+		builder.append( getCity() );
+		builder.append( ", " ).append( getState() );
+		builder.append( " " ).append( getZipCode() );
+		if ( getZipCode4() != null ) {
+			builder.append( "-" ).append( getZipCode4() );
+		}
+		return builder.toString();
+	}
 	
 }

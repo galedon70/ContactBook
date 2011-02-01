@@ -2,4 +2,12 @@ This project is the coolest ever!
 
 Next Steps
  - Review my comments in ContactBook
- - Delete the HashMap and move to adding contacts using the Person object.
+ - Finish the methods that add/remove entries into the contact book
+ - Add a method called save() that will save the List of Person objects to a file
+ - Add a method called load() that will read the file and populate the list of person objects.
+ 
+ For Fun
+ - Try out a couple different ways to sort the list before printing it.
+ 
+ NOTE : 
+ - don't put .class files into a repository.  More general - don't put any compiled resources into a repo.  
