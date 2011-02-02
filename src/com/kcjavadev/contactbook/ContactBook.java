@@ -28,8 +28,6 @@ public class ContactBook {
 		// this is the new way to do a for-loop. Java converts the Set to an
 		// iterator and does the base work for you.
 		for (Person person : contacts) {
-			// Get address doesn't exist. You can create a method in person that
-			// will print City, STATE ZipCode in a nice string format
 			System.out.println(person.getName() + " : " + person.getAddress());
 		}
 	}
@@ -45,18 +43,14 @@ public class ContactBook {
 		// initialize a new class to work with
 		ContactBook contactBook = new ContactBook();
 
-		// by separating function into method it helps keep things clean. That's
-		// why i moved this to its own function
+       // populate a few contacts initially
 		contactBook.populateInitialPersons();
 
-		// now print the entries
-		contactBook.printContacts();
-		
 		Scanner scanner = new Scanner(System.in);
 		String response = "";
 		// a do/while loop will work here.  It does the stuff first and then checks the condition
 		do {
-			System.out.print( "What would you like to do now?  [add/remove/help/quit] " );
+			System.out.print( "What would you like to do now?  [add/remove/help/print/quit] " );
 			// the scanner is new to me but seems to work pretty darn well
 		    response = scanner.nextLine();
 		    if ( response.toLowerCase().equals( "help" ) ) {
@@ -69,10 +63,13 @@ public class ContactBook {
 				// passing the contact book again so
 				removePerson( scanner, contactBook );
 			}
-		    
+			else if ( response.toLowerCase().equals( "print" ) ) {
+				// passing the contact book again so
+				contactBook.printContacts();
+			}
 		} while ( !response.toLowerCase().equals( "quit" ) );
 		
-		System.out.println( "Thank youf or using the coolest app on the planet.  Good Bye" );
+		System.out.println( "Thank you for using the coolest app on the planet.  Good Bye" );
 		scanner.close();
 	}
 
@@ -83,43 +80,39 @@ public class ContactBook {
 	private void populateInitialPersons() {
 		System.out.println("Creating initial contact book");
 
-		// this needs changed to Person person = new Person();
 		Person person = new Person();
-		person.setName("Jo Blow");
+		person.setName("Jo Schmoe");
 		person.setCity("JoVille");
-		// lower case set so this becomes person.setState("CA");
 		person.setState("CA");
-
-		// not super important now to have a separate method since it was only a
-		// one liner anyway (unless it does some kind of error checking)
-		// contactBook.addContact(person);
+		person.setZipCode(11111);
 		contacts.add(person);
 
 		person = new Person();
 		person.setName("Suzie Smiles");
 		person.setCity("Happy Town");
 		person.setState("TX");
-
+		person.setZipCode(22222);
 		contacts.add(person);
 
 		person = new Person();
 		person.setName("Brad Pitt");
 		person.setCity("Angelinaville");
 		person.setState("CA");
-
+		person.setZipCode(33333);
 		contacts.add(person);
 
 		person = new Person();
 		person.setName("Kermit");
 		person.setCity("Sesame Street");
 		person.setState("NY");
+		person.setZipCode(44444);
 		contacts.add(person);
 
 		person = new Person();
 		person.setName("Mickey Mouse");
 		person.setCity("Orlando");
 		person.setState("FL");
-
+		person.setZipCode(55555);
 		contacts.add(person);
 	}
 	
@@ -129,11 +122,52 @@ public class ContactBook {
 	}
 	
 	private static void addNewPerson( Scanner scanner, ContactBook book ) {
-		// todo : add prompts to add a new person.  Asking for name, address, etc
+		String response = "";
+		Person person = new Person();
+		
+		// not sure on this.  not sure why ContactBook was passed.
+		// I made my best guess on how to do this.  Please advise.
+		
+		System.out.print("Enter First and Last Name: ");
+		response = scanner.nextLine();
+		person.setName(response);
+				
+		System.out.print("Enter City: ");
+		response = scanner.nextLine();
+		person.setCity(response);
+		
+        System.out.print("Enter State: ");
+        response = scanner.nextLine();
+        person.setState(response);
+        
+        System.out.print("Enter Postal Code: ");
+        response = scanner.nextLine();
+        person.setZipCode(Integer.parseInt(response));
+        
+        book.contacts.add(person);
 	}
 	
 	private static void removePerson( Scanner scanner, ContactBook book ) {
-		// todo : add prompts and remove person from book
+		String response = "";
+		// not sure on this.  not sure why ContactBook was passed.
+		// I made my best guess on how to do this.  Please advise.
+		
+		System.out.print("Enter Name of person to remove: ");
+		response = scanner.nextLine();
+	
+		for (Person person : book.contacts) {
+			if (person.getName().equals(response)) {
+				book.contacts.remove(person);
+				break;
+			} 
+		}
+	}
+	
+	private static void saveBook(ContactBook book) {
+		//TODO write method to save book to file
 	}
 
+	private static void loadBook(ContactBook book) {
+		//TODO write method to load book from file
+	}
 }

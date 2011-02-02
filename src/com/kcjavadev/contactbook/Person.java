@@ -76,22 +76,25 @@ public class Person {
 		this.zipCode4 = zipCode4;
 	}
 	
-	// this is an example of a utility method that will help you 
-//	public String getAddress() {
-//		return getCity() + ", " + getState() + " " + getZipCode();
-//	}
 	
 	// a better way to build strings!
 	// This is a better way to do string concatenation
+	//public String getAddress() {
+	//	StringBuilder builder = new StringBuilder();
+	//	builder.append( getCity() );
+	//	builder.append( ", " ).append( getState() );
+	//	builder.append( " " ).append( getZipCode() );
+	//	if ( getZipCode4() != null ) {
+	//		builder.append( "-" ).append( getZipCode4() );
+	//	}
+	//	return builder.toString();
+	//}
+
+	// What is advantage to above method for getAddress versus this one?
+	// Performance isn't an issue in this case since we aren't going through iterations
+	// so for sake of readability, wouldn't this be fine too?
 	public String getAddress() {
-		StringBuilder builder = new StringBuilder();
-		builder.append( getCity() );
-		builder.append( ", " ).append( getState() );
-		builder.append( " " ).append( getZipCode() );
-		if ( getZipCode4() != null ) {
-			builder.append( "-" ).append( getZipCode4() );
-		}
-		return builder.toString();
+		String address = getCity() + (", ") + getState() + (" ") + getZipCode().toString();
+		return address;
 	}
-	
 }
