@@ -127,6 +127,16 @@ public class ContactBook {
 		
 		// not sure on this.  not sure why ContactBook was passed.
 		// I made my best guess on how to do this.  Please advise.
+		/* response :
+		 * ContactBook was passed because it is an initialized object
+		 * and this method 'printHelpMessage()' is static and doesn't
+		 * have to be initialized before calling it.  You wouldn't be 
+		 * able to call addPerson(person) without having the ContactBook
+		 * you are currently editing.
+		 * 
+		 * The code looks good.  Next thing to add is validation to make
+		 * sure what they are entering is valid data.  
+		 */
 		
 		System.out.print("Enter First and Last Name: ");
 		response = scanner.nextLine();
@@ -155,6 +165,20 @@ public class ContactBook {
 		System.out.print("Enter Name of person to remove: ");
 		response = scanner.nextLine();
 	
+		/*
+		 * One of the tricky things to master with OO programming is 
+		 * concurrency.  You will likely get a ConcurrentModificationException
+		 * here because you are removing an item from the list you are iterating over.
+		 * 
+		 * To avoid this you can create a new list.  Iterate over that new list and then
+		 * remove the person (once found) from book.contacts.  Let me know if you need 
+		 * some help writing this 
+		 * 
+		 * Should add some feedback : "Person found.  Removing them now" 
+		 * or "Person not found"  you can short circuit the method by using "return;" once
+		 * you find and remove the person.  If you get to the end of the method then you 
+		 * know you didn't find them and can print the "Not found" message.
+		 */
 		for (Person person : book.contacts) {
 			if (person.getName().equals(response)) {
 				book.contacts.remove(person);
